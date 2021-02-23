@@ -22,7 +22,7 @@ This project is configured initally using
 
 ### checkout to refactoring branch
 
-- `git checkout refactoring-jan2019`
+- `git checkout refactoring-feb2021`
 
 ### install dependencies
 
