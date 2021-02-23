@@ -1,0 +1,52 @@
+{
+  "name": "serapoint",
+  "version": "1.0.0",
+  "description": "description placeholder",
+  "private": true,
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.9.0",
+    "axios": "^0.21.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "body-parser": "^1.18.3",
+    "bootstrap": "^4.6.0",
+    "cesium": "^1.56.1",
+    "compression": "^1.7.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.10",
+    "react": "^16.7.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.18.6",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --watch --mode development",
+    "start": "nodemon server.js --public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jamshaid78600/serapoint.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jamshaid78600/serapoint/issues"
+  },
+  "homepage": "https://github.com/Jamshaid78600/serapoint#readme"
+}

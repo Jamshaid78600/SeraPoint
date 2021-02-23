@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- <link rel="icon" href="https://www.auav.com.au/favicon.png" type="image/x-icon" /> -->
+  <title>serapoint&trade;</title>
+  <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+  <style>
+    @import url(node_modules/cesium/Build/Cesium/Widgets/widgets.css);
+  </style>
+  <style>
+    @import url(css/bootstrap.min.css);
+  </style>
+  <style>
+    @import url(css/serapoint.css);
+  </style>
+
+  <style>
+    @import url(css/jquery-ui.css);
+  </style>
+  <style>
+    @import url(css/nanoscroller.min.css);
+  </style>
+
+  <style>
+    @import url(css/jquery.contextMenu.css);
+  </style>
+  <style>
+    @import url(css/context-menu.css);
+  </style>
+
+  <script src="node_modules/cesium/Build/Cesium/Cesium.js"></script>
+  <script src="lib/viewerCesiumNavigationMixin.js"></script>
+  <script src="lib/jquery/jquery.js"></script>
+  <script src="lib/jquery/jquery-ui.js"></script>
+  <script src="lib/jquery/jquery.panzoom.js"></script>
+  <script src="lib/jquery/jquery.mousewheel.min.js"></script>
+  <script src="lib/jquery/jquery.nanoscroller.min.js"></script>
+  <script src="lib/Chart.bundle.min.js"></script>
+  <script src="js/react/react.development.js" crossorigin></script>
+  <script src="js/react/react-dom.development.js" crossorigin></script>
+  <script src="js/react/react-babel.min.js"></script>
+  <script type="text/babel" src="js/react/navbar/featureItem.js"></script>
+  <script type="text/babel" src="js/react/navbar/viewItems.js"></script>
+  <script type="text/babel" src="js/react/navbar/navbar.js"></script>
+  <script type="text/babel" src="js/react/toolbar/toolbar.js"></script>
+</head>
+
+<body>
+    <div id="navbar"> </div>
+    <script type="text/babel">
+      ReactDOM.render(
+        <Navbar />,
+        document.getElementById('navbar')
+      );
+    </script>
+
+  <img src="/icons/sprite/open-iconic.svg" class="iconic-sprite" style="display:none;" />
+
+
+
+
+  <div id="appContainer">
+    <div class="row">
+      <div id="cesiumPanel" class="panel-left context-menu">
+      <div id="cesiumContainer" class="cesiumPanel"></div>
+        <div id="toolbar"></div>
+        <script type="text/babel">
+          ReactDOM.render(
+            <Toolbar />,
+            document.getElementById('toolbar')
+          );
+        </script>
+      </div>
+
+      <div id="panelLayers" class="nano">
+        <span style="margin-right: 5px;cursor: pointer;" class='close close-parent' data-parent='#panelLayers'>×</span>
+        <ul class="list-group nano-content">
+          <table id="panelLayersList">
+
+          </table>
+        </ul>
+      </div>
+      <div id="panelInfo" class="nano">
+        <span style="margin-right: 5px;cursor: pointer;" class='close close-parent' data-parent='#panelInfo'>×</span>
+          <table id="panelInfoList">
+
+          </table>
+      </div>
+
+      <div class="loadingBar" id="loadingBar">
+        <span class="caption"></span>
+      </div>
+      <div id="statusBar">No data config loaded</div>
+
+      <div class="splitter">
+        <div class="pullout">
+          <img src="icons/svg/collapse-left.svg" alt="icon name" class="icon" />
+        </div>
+      </div>
+
+      <div id="imagePanel" class="panel-right" src="icons/svg/collapse-left.svg">
+        <div id="panContainer" class="pan">
+          <div class="panzoom-parent">
+            <img id="panImage" class="panzoom" src="" />
+          </div>
+        </div>
+        <div id="image-name">
+          <img src="images/gridIcon.png" alt="icon name" class="gridView pointer control" />
+          <span></span>
+          <label class="pointer">
+            <input type="checkbox" name="singlePhotoCheck"> Link to 3D View
+          </label>
+        </div>
+      </div>
+
+      <div id="gridViewForImages" class="panel-right" src="icons/svg/collapse-left.svg">
+        <div id="panContainer" class="pan">
+          <div class="row">
+            <div class="column gridBoxImageStyle" onclick="inLargeImage('gridImage1')">
+              <image src="" class="gridImage" id="gridImage1" />
+            </div>
+            <div class="column gridBoxImageStyle" onclick="inLargeImage('gridImage2')">
+              <image src="" class="gridImage" id="gridImage2" />
+            </div>
+            <div class="column gridBoxImageStyle" onclick="inLargeImage('gridImage3')">
+              <image src="" class="gridImage" id="gridImage3" />
+            </div>
+          </div>
+          <div class="row ">
+            <div class="column gridBoxImageStyle" onclick="inLargeImage('gridImage4')">
+              <image src="" class="gridImage" id="gridImage4" />
+            </div>
+            <div class="column gridBoxImageStyle" onclick="inLargeImage('gridImage5')">
+              <image src="" class="gridImage" id="gridImage5" />
+            </div>
+            <div class="column gridBoxImageStyle" onclick="inLargeImage('gridImage6')">
+              <image src="" class="gridImage" id="gridImage6" />
+            </div>
+          </div>
+          <div class="row ">
+            <div class="column gridBoxImageStyle" onclick="inLargeImage('gridImage7')">
+              <image src="" class="gridImage" id="gridImage7" />
+            </div>
+            <div class="column gridBoxImageStyle" onclick="inLargeImage('gridImage8')">
+              <image src="" class="gridImage" id="gridImage8" />
+            </div>
+            <div class="column gridBoxImageStyle" onclick="inLargeImage('gridImage9')">
+              <image src="" class="gridImage" id="gridImage9" />
+            </div>
+          </div>
+        </div>
+        <div id="image-name">
+          <img src="images/gridIcon.png" alt="icon name" class="gridView  pointer control" />
+          <span></span>
+          <label class="pointer">
+            <input type="checkbox" name="gridViewCheck"> Link to 3D View
+          </label>
+        </div>
+      </div>
+
+
+
+      <div id="infopanel" class="nano">
+
+        <div class="nano-content">
+          <span style="margin-right: 20px;z-index: 20;cursor: crosshair;" class="close close-parent" data-parent="#infopanel">×</span>
+          <input type="button" name="hello" value="click me" onclick="alert('hi');" />
+
+        </div>
+      </div>
+
+       <div id="serverToken" class="hidden">
+        {% block serverToken %} {% endblock %}
+      </div>
+
+      <ul id="rightclick-context-menu" class='custom-menu context-menu-list context-menu-root'>
+
+      </ul>
+
+
+
+</body>
+
+<script src="./dist/app.bundle.js"></script>
+<script src="./dist/runtime.bundle.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script type="text/javascript" src="js/jPolygon.js"></script> -->
+<script type="text/javascript">
+  serapointHideImagePanel();
+</script>
+
+<script type="text/javascript">
+  $(function () {
+    let tr = document.createElement('tr');
+    let td = document.createElement('td');
+    let td2 = document.createElement('td');
+    let img = document.createElement('img');
+    img.src = "images/NavigationHelp/MouseLeftFocus.svg";
+    img.style.width = "48px";
+    img.style.height = "48px";
+    td.appendChild(img);
+    let div1 = document.createElement('div');
+    let div2 = document.createElement('div');
+    let div3 = document.createElement('div');
+    div1.innerHTML = "Focus On";
+    div1.setAttribute("class", "cesium-navigation-help-rotate");
+    div1.setAttribute("style", "color:#ff8000");
+    div2.innerHTML = "Double-click to center";
+    div2.setAttribute("class", "cesium-navigation-help-details");
+    div3.innerHTML = "view and zoom toward it";
+    div3.setAttribute("class", "cesium-navigation-help-details");
+    td2.appendChild(div1);
+    td2.appendChild(div2);
+    td2.appendChild(div3);
+    tr.appendChild(td);
+    tr.appendChild(td2);
+
+    $(".cesium-click-navigation-help")
+      .find('tbody').append(tr);
+
+    $(".close-parent").on("click", function (e) {
+      const parentSelector = $(this).data("parent");
+      if (parentSelector) {
+        $(parentSelector).hide();
+      }
+    });
+
+    $("#infopanel").draggable({
+      cursor: "pointer",
+      opacity: 0.35,
+      scroll: false,
+      containment: "#appContainer"
+    });
+    $("#helpexpander").on('click', function (e) {
+
+      if ($('#helpmenucontainer').is(":visible")) {
+        $('#helpmenucontainer').hide();
+        document.getElementById('Touch').style.display = "none";
+        document.getElementById('Touch').className.replace(" active", "");
+      } else {
+        $('#helpmenucontainer').show();
+        e.preventDefault();
+        e.stopPropagation();
+        document.getElementById('Mouse').style.display = "block";
+        $('#Mouse').addClass('active');
+      }
+    })
+
+    $(document).click(function (event) {
+      if (!$(event.target).closest('#helpmenucontainer').length) {
+        if ($('#helpmenucontainer').is(":visible")) {
+          $('#helpmenucontainer').hide();
+          document.getElementById('Touch').style.display = "none";
+          document.getElementById('Touch').className.replace(" active", "");
+        }
+      }
+    });
+
+
+  });
+</script>
+</html>
